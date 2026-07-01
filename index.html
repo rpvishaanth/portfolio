@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VISH_OS // Vishaanth R P - Firmware & Robotics</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Share Tech Mono for the HUD feel -->
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Fira+Code:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
@@ -12,6 +14,7 @@
             --neon-blue: #00f3ff;
             --neon-green: #39ff14;
             --neon-orange: #ffaa00;
+            --neon-yellow: #fcd34d;
             --bg-dark: #050b14;
         }
         
@@ -87,6 +90,16 @@
             border-color: #fff;
         }
 
+        /* Gold HUD Bracket for Certifications */
+        .hud-bracket-gold {
+            border-color: rgba(252, 211, 77, 0.3);
+        }
+        .hud-bracket-gold::before, .hud-bracket-gold::after { border-color: var(--neon-yellow); }
+        .hud-bracket-gold:hover {
+            border-color: rgba(252, 211, 77, 0.8);
+            box-shadow: 0 0 15px rgba(252, 211, 77, 0.15) inset;
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #02060d; }
@@ -111,12 +124,14 @@
 
     <div class="scanline"></div>
 
+    <!-- MAIN HUD CONTAINER -->
     <div class="max-w-[95rem] mx-auto p-4 sm:p-6 lg:p-8 relative z-10 flex flex-col min-h-screen">
         
+        <!-- TOP NAVIGATION / SYSTEM STATUS -->
         <header class="flex flex-col md:flex-row justify-between items-end md:items-center border-b border-cyan-800/60 pb-4 mb-8">
             <div>
                 <h1 class="text-3xl sm:text-4xl font-bold tracking-widest text-cyan-400 drop-shadow-[0_0_8px_rgba(0,243,255,0.8)]">
-                    VISH_OS <span class="text-white text-xl animate-pulse">v2.0</span>
+                    VISH_OS <span class="text-white text-xl animate-pulse">v2.1</span>
                 </h1>
                 <p class="text-xs tracking-widest text-cyan-600 mt-1 uppercase">Sys_Admin: Vishaanth R P // Online</p>
             </div>
@@ -137,10 +152,13 @@
             </div>
         </header>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-grow">
+        <!-- MAIN SPLIT LAYOUT -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
             
+            <!-- LEFT PANEL: PROFILE & TERMINAL -->
             <div class="lg:col-span-4 flex flex-col gap-6">
                 
+                <!-- IDENTIFICATION MODULE -->
                 <div class="hud-bracket p-6">
                     <div class="flex items-center gap-4 mb-4 border-b border-cyan-800/50 pb-4">
                         <div class="w-16 h-16 rounded border border-cyan-500 flex items-center justify-center bg-cyan-950/50 shadow-[0_0_10px_rgba(0,243,255,0.2)]">
@@ -158,6 +176,7 @@
                         <p>> Specializations loaded: Low-level drivers, real-time robotics stacks, deep learning perception, custom logic design.</p>
                     </div>
 
+                    <!-- COMMLINKS -->
                     <div class="mt-6 space-y-2 text-xs font-['Fira_Code']">
                         <a href="mailto:rpvishaanth03@gmail.com" class="flex justify-between items-center p-2 hover:bg-cyan-900/40 border border-transparent hover:border-cyan-700 transition-all cursor-pointer group">
                             <span class="text-slate-400 group-hover:text-cyan-300">[EMAIL_LINK]</span>
@@ -178,26 +197,31 @@
                     </div>
                 </div>
 
-                <div class="hud-bracket p-4 h-full bg-black/60 font-['Fira_Code'] text-xs flex flex-col">
+                <!-- BOOT SEQUENCE TERMINAL -->
+                <div class="hud-bracket p-4 h-64 lg:flex-grow bg-black/60 font-['Fira_Code'] text-xs flex flex-col">
                     <div class="flex justify-between border-b border-cyan-900 pb-2 mb-3">
                         <span class="text-slate-500">root@vish_os:~#</span>
                         <span class="text-cyan-700 block">sys_log.exe</span>
                     </div>
-                    <div class="text-green-500 space-y-1 flex-grow overflow-hidden" id="terminal-output">
-                        </div>
-                    <div class="mt-auto pt-2 flex text-cyan-400">
+                    <div class="text-green-500 space-y-1 flex-grow overflow-y-auto" id="terminal-output">
+                        <!-- JS injects boot sequence here -->
+                    </div>
+                    <div class="mt-2 pt-2 flex text-cyan-400">
                         <span>> </span><span class="typewriter ml-2">Awaiting command...</span>
                     </div>
                 </div>
             </div>
 
+            <!-- RIGHT PANEL: MODULES (GITHUB REPOS) -->
             <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6 content-start">
                 
+                <!-- SECTION HEADER -->
                 <div class="md:col-span-2 flex items-center gap-3 border-b border-cyan-800/40 pb-2">
                     <svg class="w-5 h-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
                     <h3 class="text-xl tracking-wider">MOUNTED_DATABANKS <span class="text-xs text-slate-500 ml-2">(PROJECT REPOSITORIES)</span></h3>
                 </div>
 
+                <!-- REPO 1: GREENHOUSE ROVER -->
                 <a href="https://github.com/rpvishaanth/Green-house-Rover" target="_blank" class="hud-bracket p-5 flex flex-col group hover:-translate-y-1 transition-transform">
                     <div class="flex justify-between items-start mb-4">
                         <div class="bg-green-500/10 text-green-400 p-2 rounded border border-green-500/30">
@@ -213,6 +237,7 @@
                     </div>
                 </a>
 
+                <!-- REPO 2: MULTI-CAMERA PERCEPTION -->
                 <a href="https://github.com/rpvishaanth/Multicamera_Perception" target="_blank" class="hud-bracket p-5 flex flex-col group hover:-translate-y-1 transition-transform">
                     <div class="flex justify-between items-start mb-4">
                         <div class="bg-blue-500/10 text-blue-400 p-2 rounded border border-blue-500/30">
@@ -228,6 +253,7 @@
                     </div>
                 </a>
 
+                <!-- REPO 3: PYNQ FPGA ENCRYPTION -->
                 <a href="https://github.com/rpvishaanth/Lightweight-encryption-algorithm-PYNQ--Z2-FPGA" target="_blank" class="hud-bracket p-5 flex flex-col group hover:-translate-y-1 transition-transform">
                     <div class="flex justify-between items-start mb-4">
                         <div class="bg-orange-500/10 text-orange-400 p-2 rounded border border-orange-500/30">
@@ -244,6 +270,7 @@
                     </div>
                 </a>
 
+                <!-- REPO 4: OPENCV -->
                 <a href="https://github.com/rpvishaanth/Computer_Vision-Open_CV-" target="_blank" class="hud-bracket p-5 flex flex-col group hover:-translate-y-1 transition-transform">
                     <div class="flex justify-between items-start mb-4">
                         <div class="bg-purple-500/10 text-purple-400 p-2 rounded border border-purple-500/30">
@@ -260,6 +287,7 @@
                     </div>
                 </a>
 
+                <!-- REPO 5: SMART RAILWAY PLATFORM -->
                 <a href="https://github.com/rpvishaanth/Smart-Railway-platform" target="_blank" class="hud-bracket md:col-span-2 p-5 flex flex-col sm:flex-row gap-6 group hover:-translate-y-1 transition-transform border-cyan-500/40">
                     <div class="flex-shrink-0 bg-cyan-500/10 text-cyan-400 p-4 rounded border border-cyan-500/30 flex items-center justify-center">
                         <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
@@ -281,12 +309,86 @@
             </div>
         </div>
 
-        <footer class="mt-12 text-center text-[10px] text-cyan-700 font-['Fira_Code'] uppercase tracking-widest">
+        <!-- CREDENTIALS & CERTIFICATIONS SECTION -->
+        <div class="mt-8 mb-4 border-t border-cyan-800/40 pt-8">
+            <div class="flex items-center gap-3 mb-6">
+                <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                <h3 class="text-xl tracking-wider text-yellow-400">SECURE_CLEARANCE_RECORDS <span class="text-xs text-slate-500 ml-2">(CERTIFICATIONS & OFFERS)</span></h3>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                
+                <!-- CERT 1: DEEP LEARNING -->
+                <a href="https://drive.google.com/drive/folders/1eMm0dr_aLYXQz6ReIQCTN62JkPBw3UJj?usp=sharing" target="_blank" class="hud-bracket hud-bracket-gold p-4 flex flex-col group hover:-translate-y-1 transition-transform">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="bg-yellow-500/10 text-yellow-500 p-1.5 rounded border border-yellow-500/30">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        </div>
+                        <span class="text-[9px] text-yellow-500 font-['Fira_Code'] tracking-widest uppercase bg-yellow-500/10 px-1 rounded">VERIFIED</span>
+                    </div>
+                    <h5 class="text-sm font-bold text-white mb-1 group-hover:text-yellow-400 transition-colors">Deep Learning</h5>
+                    <p class="text-[10px] text-cyan-100/60 font-['Fira_Code'] uppercase">NPTEL Certification</p>
+                </a>
+
+                <!-- CERT 2: EMBEDDED SENSING -->
+                <a href="https://drive.google.com/drive/folders/1eMm0dr_aLYXQz6ReIQCTN62JkPBw3UJj?usp=sharing" target="_blank" class="hud-bracket hud-bracket-gold p-4 flex flex-col group hover:-translate-y-1 transition-transform">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="bg-yellow-500/10 text-yellow-500 p-1.5 rounded border border-yellow-500/30">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                        <span class="text-[9px] text-yellow-500 font-['Fira_Code'] tracking-widest uppercase bg-yellow-500/10 px-1 rounded">VERIFIED</span>
+                    </div>
+                    <h5 class="text-sm font-bold text-white mb-1 group-hover:text-yellow-400 transition-colors">Embedded Sensing, Actuation & Interfacing</h5>
+                    <p class="text-[10px] text-cyan-100/60 font-['Fira_Code'] uppercase">NPTEL Certification</p>
+                </a>
+
+                <!-- CERT 3: SENSORS AND ACTUATORS -->
+                <a href="https://drive.google.com/drive/folders/1eMm0dr_aLYXQz6ReIQCTN62JkPBw3UJj?usp=sharing" target="_blank" class="hud-bracket hud-bracket-gold p-4 flex flex-col group hover:-translate-y-1 transition-transform">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="bg-yellow-500/10 text-yellow-500 p-1.5 rounded border border-yellow-500/30">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                        </div>
+                        <span class="text-[9px] text-yellow-500 font-['Fira_Code'] tracking-widest uppercase bg-yellow-500/10 px-1 rounded">VERIFIED</span>
+                    </div>
+                    <h5 class="text-sm font-bold text-white mb-1 group-hover:text-yellow-400 transition-colors">Sensors & Actuators</h5>
+                    <p class="text-[10px] text-cyan-100/60 font-['Fira_Code'] uppercase">NPTEL Certification</p>
+                </a>
+
+                <!-- CERT 4: DESIGN THINKING -->
+                <a href="https://drive.google.com/drive/folders/1eMm0dr_aLYXQz6ReIQCTN62JkPBw3UJj?usp=sharing" target="_blank" class="hud-bracket hud-bracket-gold p-4 flex flex-col group hover:-translate-y-1 transition-transform">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="bg-yellow-500/10 text-yellow-500 p-1.5 rounded border border-yellow-500/30">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                        </div>
+                        <span class="text-[9px] text-yellow-500 font-['Fira_Code'] tracking-widest uppercase bg-yellow-500/10 px-1 rounded">VERIFIED</span>
+                    </div>
+                    <h5 class="text-sm font-bold text-white mb-1 group-hover:text-yellow-400 transition-colors">Design Thinking Primer</h5>
+                    <p class="text-[10px] text-cyan-100/60 font-['Fira_Code'] uppercase">NPTEL Certification</p>
+                </a>
+
+                <!-- INTERNSHIP OFFERS -->
+                <a href="https://drive.google.com/drive/folders/1eMm0dr_aLYXQz6ReIQCTN62JkPBw3UJj?usp=sharing" target="_blank" class="hud-bracket p-4 flex flex-col group hover:-translate-y-1 transition-transform border-emerald-500/40">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="bg-emerald-500/10 text-emerald-400 p-1.5 rounded border border-emerald-500/30">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        </div>
+                        <span class="text-[9px] text-emerald-400 font-['Fira_Code'] tracking-widest uppercase bg-emerald-500/10 px-1 rounded">AUTHORIZED</span>
+                    </div>
+                    <h5 class="text-sm font-bold text-white mb-1 group-hover:text-emerald-400 transition-colors">Internship Records</h5>
+                    <p class="text-[10px] text-cyan-100/60 font-['Fira_Code'] uppercase">Offer Letters & Contracts</p>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="mt-8 text-center text-[10px] text-cyan-700 font-['Fira_Code'] uppercase tracking-widest">
             <p>END OF TRANSMISSION // © 2026 VISHAANTH R P. All systems operational.</p>
         </footer>
 
     </div>
 
+    <!-- Boot Sequence Simulation Script -->
     <script>
         const terminalLog = [
             "Loading Kernel: Linux/ARM64 5.15.0-101-generic...",
@@ -296,6 +398,8 @@
             "Loading YOLOv8 weights into VRAM... [OK]",
             "Checking FPGA Fabric configuration... [OK]",
             "Establishing TCP/UDP socket telemetry... [OK]",
+            "Decrypting NPTEL certification archives... [OK]",
+            "Validating clearance: Bosch Internship... [OK]",
             "Verifying RHCSA System Access... [OK]",
             "System fully operational. Ready for deployment."
         ];
@@ -308,6 +412,10 @@
                 const line = document.createElement('div');
                 line.textContent = `[${(Math.random() * 2 + 1).toFixed(3)}] ${terminalLog[index]}`;
                 terminalOutput.appendChild(line);
+                
+                // Keep scrolled to bottom
+                terminalOutput.scrollTop = terminalOutput.scrollHeight;
+                
                 index++;
                 setTimeout(printLog, Math.random() * 300 + 100);
             }
